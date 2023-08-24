@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+</head>
+<body>
+<form id="login-form">
+    <label>Email:</label>
+    <input type="text" id="email" name="email" required><br>
+    <label>Password:</label>
+    <input type="password" id="password" name="password" required><br>
+    <button type="submit">Login</button>
+</form>
+<a href="/api-docs">asd</a>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        if (response.ok) {
+            const token = await response.json();
+            localStorage.setItem('token', token);
+            console.log('Token:', token);
+        } else {
+            console.error('Login failed');
+        }
+    });
+</script>
+</body>
+</html>
