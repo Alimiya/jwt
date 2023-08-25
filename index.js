@@ -24,10 +24,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 
-app.get("/", (req, res) => {
-    res.render('index')
-    res.send(`It works`)
-})
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+});
 app.get("/login", (req, res) => {
     res.render('login')
 })
