@@ -36,3 +36,5 @@ jobs:
       run: docker-compose down
 
     - uses: actions/deploy-pages@2
+      with:
+        ref: 'main'
