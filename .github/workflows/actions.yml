@@ -22,7 +22,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
+        
+    - uses: peaceiris/actions-gh-pages@v3
+    
     - name: Install dependencies
       run: npm ci
 
@@ -35,4 +37,4 @@ jobs:
     - name: Stop Docker Compose
       run: docker-compose down
 
-    - uses: peaceiris/actions-gh-pages@v3
+    
