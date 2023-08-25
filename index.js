@@ -27,13 +27,13 @@ app.use("/api/users", userRoute)
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 });
-app.get("/login", (req, res) => {
+app.get("/jwt/login", (req, res) => {
     res.sendFile(__dirname + '/login.html')
 })
-app.get("/register", (req, res) => {
+app.get("jwt/register", (req, res) => {
     res.sendFile(__dirname + '/register.html')
 })
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+app.use('/jwt/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 const start = async () => {
     try {
