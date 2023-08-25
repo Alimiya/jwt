@@ -61,7 +61,7 @@ jobs:
       - name: Deploy to GitHub Pages (Jekyll)
         uses: actions/checkout@v2
         with:
-          repository: jwt
+          repository: alimiya/jwt
           path: jekyll-site
           ref: main
 
