@@ -16,14 +16,16 @@ dotenv.config({path: './config/.env'})
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-app.set("view engine", "ejs")
+app.set("view engine", "html")
 app.set("views", __dirname + "/views")
+app.engine('html', require('ejs').renderFile)
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 
 app.get("/", (req, res) => {
+    res.render('index')
     res.send(`It works`)
 })
 app.get("/login", (req, res) => {
