@@ -35,6 +35,4 @@ jobs:
     - name: Stop Docker Compose
       run: docker-compose down
 
-    - uses: actions/deploy-pages@2
-      with:
-        ref: 'main'
+    - uses: actions/deploy-pages@1
