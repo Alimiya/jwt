@@ -1,12 +1,13 @@
-name: CI/CD Workflow
+name: Node.js CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -14,68 +15,22 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Install Node.js dependencies
-        run: npm ci
+    - name: Build Docker image
+      run: docker buildx build -t jwt .
 
-      - name: Build Docker image
-        run: docker buildx build -t jwt .
+    - name: Start Docker Compose
+      run: docker-compose up -d
 
-      - name: Start Docker Compose
-        run: docker-compose up -d
-
-      - name: Run Jekyll Deployment
-        uses: actions/checkout@v2
-        with:
-          repository: <your-jekyll-repo>
-          path: jekyll-site
-          ref: main
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./jekyll-site
-          destination: ./jekyll-site/_site
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: jekyll-site
-          path: ./jekyll-site/_site
-
-      - name: Stop Docker Compose
-        run: docker-compose down
-
-      # Jekyll Deployment
-      - name: Deploy to GitHub Pages (Jekyll)
-        uses: actions/checkout@v2
-        with:
-          repository: alimiya/jwt
-          path: jekyll-site
-          ref: main
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./jekyll-site
-          destination: ./jekyll-site/_site
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: jekyll-site
-          path: ./jekyll-site/_site
+    - name: Stop Docker Compose
+      run: docker-compose down
