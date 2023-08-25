@@ -46,15 +46,19 @@ swaggerSpec.paths = {
                             properties: {
                                 fname: {
                                     type: 'string',
+                                    example: 'John'
                                 },
                                 lname: {
                                     type: 'string',
+                                    example: 'Doe'
                                 },
                                 email: {
                                     type: 'string',
+                                    example: 'johndoe@example.com'
                                 },
                                 password: {
                                     type: 'string',
+                                    example: 'securepassword'
                                 },
                             },
                         },
@@ -88,9 +92,11 @@ swaggerSpec.paths = {
                             properties: {
                                 email: {
                                     type: 'string',
+                                    example: 'johndoe@example.com'
                                 },
                                 password: {
                                     type: 'string',
+                                    example: 'securepassword'
                                 },
                             },
                         },
@@ -139,15 +145,19 @@ swaggerSpec.paths = {
                             properties: {
                                 fname: {
                                     type: 'string',
+                                    example: 'John'
                                 },
                                 lname: {
                                     type: 'string',
+                                    example: 'Doe'
                                 },
                                 email: {
                                     type: 'string',
+                                    example: 'johndoe@example.com'
                                 },
                                 password: {
                                     type: 'string',
+                                    example: 'securepassword'
                                 },
                             },
                         },
@@ -177,6 +187,7 @@ swaggerSpec.paths = {
                     required: true,
                     schema: {
                         type: 'string',
+                        example: '123456789qwerty'
                     },
                     description: 'ID пользователя',
                 },
@@ -205,6 +216,7 @@ swaggerSpec.paths = {
                     required: true,
                     schema: {
                         type: 'string',
+                        example: '123456789qwerty'
                     },
                     description: 'ID пользователя',
                 },
@@ -218,15 +230,19 @@ swaggerSpec.paths = {
                             properties: {
                                 fname: {
                                     type: 'string',
+                                    example: 'John'
                                 },
                                 lname: {
                                     type: 'string',
+                                    example: 'Doe'
                                 },
                                 email: {
                                     type: 'string',
+                                    example: 'johndoe@example.com'
                                 },
                                 password: {
                                     type: 'string',
+                                    example: 'securepassword'
                                 },
                             },
                         },
@@ -257,6 +273,7 @@ swaggerSpec.paths = {
                     required: true,
                     schema: {
                         type: 'string',
+                        example: '123456789qwerty'
                     },
                     description: 'ID пользователя',
                 },
