@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 });
 app.get("/login", (req, res) => {
-    res.render('login')
+    res.sendFile(__dirname + '/login.html')
 })
 app.get("/register", (req, res) => {
-    res.render('register')
+    res.sendFile(__dirname + '/register.html')
 })
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
