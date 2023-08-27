@@ -1,2 +1,2 @@
 # jwt
-# Node.js | ExpressJS | MongoDB | Mongoose | REST API | Swagger | Mocha & Chai | Docker | Github Actions | Git
+# Node.js | ExpressJS | MongoDB | Mongoose | REST API | Swagger | Mocha & Chai | Docker | Github Actions | Postman | Git
