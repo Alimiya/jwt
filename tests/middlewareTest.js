@@ -1,7 +1,6 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const express = require('express')
-const app = express()
+const app = require('../index')
 const expect = chai.expect
 const { describe, it } = require('mocha')
 
@@ -17,7 +16,7 @@ describe('Auth Middleware', () => {
                 expect(res).to.have.status(200)
                 done()
             })
-    })
+    }).timeout(10000)
 
     it('should return 401 with an invalid token', (done) => {
         const token = 'invalid_token'

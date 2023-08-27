@@ -36,11 +36,16 @@ exports.createUser = async (req, res) => {
 }
 
 exports.updateUserById = async (req, res) => {
+    const {id} = req.params
     const {fname, lname, email, password} = req.body
     try {
         const updatedUser = await User.findByIdAndUpdate(
+            id,
             {
-                fname, lname, email, password
+                fname,
+                lname,
+                email,
+                password
             },
             {new: true, projection: {__v: 0}}
         )

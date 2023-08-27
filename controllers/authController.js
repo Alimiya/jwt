@@ -9,7 +9,7 @@ exports.register = async (req, res) => {
     const emailExist = await User.findOne({email})
 
     if (emailExist) {
-        res.status(400).send("Email already exists")
+        res.status(400).json({message:"Email already exists"})
         return
     }
 
@@ -27,13 +27,13 @@ exports.register = async (req, res) => {
         const {error} = await registerSchema.validateAsync(req.body)
 
         if (error) {
-            res.status(400).send(error.details[0].message)
+            res.status(400).json(error.details[0].message)
         } else {
             const saveUser = await user.save()
-            res.status(200).send("User successfully created")
+            res.status(200).json({message:"User successfully created"})
         }
     } catch (error) {
-        res.status(500).send(error)
+        res.status(500).json(error)
     }
 }
 

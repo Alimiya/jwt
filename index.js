@@ -12,13 +12,12 @@ const path = require("path");
 
 dotenv.config({path: './config/.env'})
 
-// app.use(cors())
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "html")
 app.set("views", __dirname + "/views")
-app.engine('html')
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use("/api/auth", authRoute)
@@ -54,4 +53,6 @@ const start = async () => {
 }
 
 start()
+
+module.exports = app
 
